@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'FontAwesome.';
+  src: url('../font-awesome-4.7.0/fonts/FontAwesome.otf');
+  /*src: url('../font-awesome-4.7.0/fonts/FontAwesome-webfont.eot') format('embedded-opentype'),*/
+  /*url('../font-awesome-4.7.0/fonts/FontAwesome-webfont.woff') format('woff'),*/
+  /*url('../font-awesome-4.7.0/fonts/FontAwesome-webfont.ttf') format('truetype'),*/
+  /*url('../font-awesome-4.7.0/fonts/FontAwesome-webfont.svg#SofiaProLight') format('svg');*/
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-family: 宋体;
+  font-size: 100%;
+}

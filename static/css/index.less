@@ -1,0 +1,45 @@
+@import "base";
+
+body {
+  //background: url("{{'img/background.png'|staticfile}}");
+  background: url("/static/img/background.png");
+  background-size: cover;
+  .inline-flex(@flex-direction:column);
+}
+
+
+
+section.top {
+  .inline-flex();
+  .left {
+    width: 10rem;
+    height: 5rem;
+    background: url("/static/img/logo.png");
+    background-size: cover;
+  }
+  .right {
+    .inline-flex();
+    justify-content: space-around;
+    margin-left: auto;
+    width: 12rem;
+    height: 5rem;
+    .set, .close {
+      background: url("/static/img/setting.png");
+      background-size: cover;
+      width: 5rem;
+      height: 5rem;
+    }
+    .close {
+      background: url("/static/img/close.png");
+      background-size: cover;
+    }
+  }
+}
+
+section.content {
+
+}
+
+section.bottom {
+
+}

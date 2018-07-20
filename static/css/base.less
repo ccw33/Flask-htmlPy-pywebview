@@ -1,0 +1,16 @@
+.inline-flex(@flex-direction:row,@justify-content:flex-start,@align-items:baseline,@flex-wrap:nowrap,@fullFill:true) {
+  display: inline-flex;
+  display: -webkit-inline-flex;
+  justify-content: @justify-content;
+  -webkit-justify-content: @justify-content;
+  align-items: @align-items;
+  -webkit-align-items: @align-items;
+  flex-wrap: @flex-wrap;
+  -webkit-flex-wrap: @flex-wrap;
+  flex-direction: @flex-direction;
+  -webkit-flex-direction: @flex-direction;
+  & when (@fullFill) {
+    width: 100%;
+  }
+}
+

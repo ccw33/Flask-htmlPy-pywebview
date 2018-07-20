@@ -1,0 +1,62 @@
+body {
+  background: url("/static/img/background.png");
+  background-size: cover;
+  display: inline-flex;
+  display: -webkit-inline-flex;
+  justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  align-items: baseline;
+  -webkit-align-items: baseline;
+  flex-wrap: nowrap;
+  -webkit-flex-wrap: nowrap;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  width: 100%;
+}
+section.top {
+  display: inline-flex;
+  display: -webkit-inline-flex;
+  justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  align-items: baseline;
+  -webkit-align-items: baseline;
+  flex-wrap: nowrap;
+  -webkit-flex-wrap: nowrap;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  width: 100%;
+}
+section.top .left {
+  width: 10rem;
+  height: 5rem;
+  background: url("/static/img/logo.png");
+  background-size: cover;
+}
+section.top .right {
+  display: inline-flex;
+  display: -webkit-inline-flex;
+  justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  align-items: baseline;
+  -webkit-align-items: baseline;
+  flex-wrap: nowrap;
+  -webkit-flex-wrap: nowrap;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  margin-left: auto;
+  width: 12rem;
+  height: 5rem;
+}
+section.top .right .set,
+section.top .right .close {
+  background: url("/static/img/setting.png");
+  background-size: cover;
+  width: 5rem;
+  height: 5rem;
+}
+section.top .right .close {
+  background: url("/static/img/close.png");
+  background-size: cover;
+}
