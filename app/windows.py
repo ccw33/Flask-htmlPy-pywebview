@@ -3,6 +3,7 @@ import threading
 import re
 import sys
 import platform
+from open import base_url
 
 is_windows = platform.system()=='Windows'
 
@@ -53,14 +54,14 @@ def ip_window(receiver):
         # 隐藏菜单栏
         # web_app.window.setWindowFlags(QtCore.Qt.FramelessWindowHint)
     
-        web_app.url = u"http://127.0.0.1:5000/#/"
+        web_app.url = u"%s#/" % base_url
         t = threading.Thread(target=close_message_listener_htmlpy,args=(receiver,web_app))#接收关闭信号并关闭窗口的线程
         t.start()
         web_app.start()
     else:
         t = threading.Thread(target=close_message_listener,args=(receiver,))#接收关闭信号并关闭窗口的线程
         t.start()
-        uid = webview.create_window("网络设置", "http://localhost:5000/#/",width=700, height=600)
+        uid = webview.create_window("网络设置", "%s#/" % base_url,width=700, height=600)
         return uid
 
 
@@ -83,7 +84,7 @@ def wifi_list(receiver):
         # # 隐藏菜单栏
         # web_app.window.setWindowFlags(QtCore.Qt.FramelessWindowHint)
 
-        web_app.url = u"http://localhost:5000/#/wifi"
+        web_app.url = u"%s#/wifi" % base_url
 
         t = threading.Thread(target=close_message_listener_htmlpy,args=(receiver,web_app))#接收关闭信号并关闭窗口的线程
         t.start()
@@ -91,11 +92,11 @@ def wifi_list(receiver):
     else:
         t = threading.Thread(target=close_message_listener,args=(receiver,))#接收关闭信号并关闭窗口的线程
         t.start()
-        uid = webview.create_window("wifi列表", "http://localhost:5000/#/wifi",width=224, height=500,)
+        uid = webview.create_window("wifi列表", "%s#/wifi" % base_url,width=224, height=500,)
         return uid
 
 
-def wifi_link(receiver):
+def wifi_link(receiver,append_url):
     '''
     打开wifi窗口并返回该对象
     :return: web_app
@@ -114,7 +115,7 @@ def wifi_link(receiver):
         # 隐藏菜单栏
         # web_app.window.setWindowFlags(QtCore.Qt.FramelessWindowHint)
 
-        web_app.url = u"http://127.0.0.1:5000/#/wifi_connect_win"
+        web_app.url = u"%s%s#/wifi_connect_win" % (base_url,append_url)
 
         t = threading.Thread(target=close_message_listener_htmlpy,args=(receiver,web_app))#接收关闭信号并关闭窗口的线程
         t.start()
@@ -122,7 +123,7 @@ def wifi_link(receiver):
     else:
         t = threading.Thread(target=close_message_listener,args=(receiver,))#接收关闭信号并关闭窗口的线程
         t.start()
-        uid = webview.create_window("连接wifi", "http://localhost:5000/#/wifi_connect_win",width=450, height=250)
+        uid = webview.create_window("连接wifi", "%s#/wifi_connect_win" % base_url,width=450, height=250)
         return uid
 
 

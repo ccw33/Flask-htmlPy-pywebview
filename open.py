@@ -1,8 +1,9 @@
 #encoding:utf-8
 import sys
 import requests
+import Conf
 
-base_url = 'http://localhost:5000/'
+base_url = 'http://%s:%s/' % (Conf.host,Conf.port)
 
 if __name__=="__main__":
     if sys.argv[1] == 'ip':
