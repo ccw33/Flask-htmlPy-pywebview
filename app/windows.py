@@ -80,8 +80,8 @@ def wifi_list(receiver):
         web_app.x_pos = int(x) - web_app.width / 2
         web_app.y_pos = int(y) - web_app.height / 2
 
-        # 隐藏菜单栏
-        web_app.window.setWindowFlags(QtCore.Qt.FramelessWindowHint)
+        # # 隐藏菜单栏
+        # web_app.window.setWindowFlags(QtCore.Qt.FramelessWindowHint)
 
         web_app.url = u"http://localhost:5000/#/wifi"
 

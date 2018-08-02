@@ -2,6 +2,7 @@
 import sys
 from flask import Flask,render_template,Response,request
 # from app.network import get_netcard
+from app import network
 import json
 from app import windows
 import webview
@@ -26,26 +27,44 @@ def hello_world():
 @app.route('/get_lans')
 def get_lans_data():
     # 跨域和返回数据设置
-    # resp = Response(json.dumps(get_netcard()), mimetype='application/json')
-    lans=[
-          {
-            'lan': '111',
-            'is_auto': False,
-            'ip': '172.10.1.2',
-            'subnet_mask': '125.214.12.0',
-            'gateway': '158.158.12.1',
-            'dns': '15.125.67.25'
-          },
-        ]
-    resp = Response(json.dumps(lans), mimetype='application/json')
+    # info=[
+    #       {
+    #         'lan': '111',
+    #         'is_auto': False,
+    #         'ip': '172.10.1.2',
+    #         'subnet_mask': '125.214.12.0',
+    #         'gateway': '158.158.12.1',
+    #         'dns': '15.125.67.25'
+    #       },
+    #     ]
+    # resp = Response(json.dumps(info), mimetype='application/json')
+    try:
+        resp = Response(json.dumps(network.getNetworkInfo()), mimetype='application/json')
+    except Exception  as e:
+        resp = Response(json.dumps({'content':e.message}), mimetype='application/json',status=500)
     resp.headers['Access-Control-Allow-Origin'] = '*'
     return resp
 
 @app.route('/save_lan',methods=['POST'])
 def save_lan():
     # 跨域和返回数据设置
-    a = request
-    resp = Response(json.dumps(get_netcard()), mimetype='application/json')
+    data = request.form.to_dict()
+    try:
+        # network.setNetwork(data['id'], data['mac'], data['ip'], data['subnet_mask'], data['gateway'], data['dns'])
+        resp = Response(json.dumps({'content': 'success'}), mimetype='application/json',status=200)
+    except Exception as e:
+        resp = Response(json.dumps({'content': e.message}), mimetype='application/json',status=500)
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
+
+
+@app.route('/get_wifis')
+def get_wifis_data():
+    try:
+        wifi_list = network.getWifiList().wifi_list
+        resp = Response(json.dumps(wifi_list), mimetype='application/json')
+    except Exception  as e:
+        resp = Response(json.dumps({'content':e.message}), mimetype='application/json',status=500)
     resp.headers['Access-Control-Allow-Origin'] = '*'
     return resp
 
